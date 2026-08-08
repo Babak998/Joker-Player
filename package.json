@@ -1,0 +1,1 @@
+{"name":"joker-player","version":"4.7.1","private":true,"scripts":{"test":"node tests/qa.js && node tests/build-preflight.js && node qa/performance-gates.js"},"engines":{"node":">=20.17.0"}}
