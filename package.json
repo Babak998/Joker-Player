@@ -1,0 +1,1 @@
+{"name":"joker-player","version":"4.7.1","description":"Joker Player - 2026 hardened music player","scripts":{"test":"node tests/qa.js && node tests/build-preflight.js","qa:performance":"node qa/performance-gates.js"},"engines":{"node":">=20"}}
