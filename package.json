@@ -7,11 +7,28 @@
     "test": "node tests/qa.js",
     "qa": "node tests/qa.js",
     "prepare:android": "cordova platform add android@15.0.0 --nosave",
-    "build:debug": "npm run prepare:android && cordova build android --debug",
-    "build:release": "npm run prepare:android && cordova build android --release",
+    "build:debug": "npm run prepare:android && cordova build android --debug --verbose",
+    "build:release": "npm run prepare:android && cordova build android --release --verbose",
+    "verify": "npm run qa",
+    "clean:android": "cordova platform rm android --nosave || true",
     "qa:performance": "node qa/performance-gates.js"
   },
+  "engines": {"node": ">=20.17.0 <23"},
+  "devDependencies": {"cordova": "13.0.0"},
   "dependencies": {
-    "cordova-android": "15.0.0"
+    "cordova-android": "15.0.0",
+    "cordova-plugin-android-permissions": "1.1.5",
+    "cordova-plugin-device": "3.0.0",
+    "cordova-plugin-file": "8.1.3",
+    "cordova-plugin-joker-native": "file:native/cordova-plugin-joker-native"
+  },
+  "cordova": {
+    "platforms": ["android"],
+    "plugins": {
+      "cordova-plugin-joker-native": "./native/cordova-plugin-joker-native",
+      "cordova-plugin-android-permissions": "1.1.5",
+      "cordova-plugin-device": "3.0.0",
+      "cordova-plugin-file": "8.1.3"
+    }
   }
 }
