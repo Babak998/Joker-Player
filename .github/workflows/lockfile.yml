@@ -1,0 +1,25 @@
+name: Generate and Verify Lockfile
+
+on:
+  workflow_dispatch:
+
+jobs:
+  lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: Check package manifest
+        run: test -f package.json
+      - name: Generate genuine lockfile
+        run: npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+      - name: Verify reproducible install
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Upload lockfile
+        uses: actions/upload-artifact@v4
+        with:
+          name: joker-package-lock
+          path: package-lock.json
