@@ -1,1 +1,17 @@
-{"name":"joker-player","version":"4.7.1","description":"Joker Player - 2026 hardened music player","scripts":{"test":"node tests/qa.js && node tests/build-preflight.js","qa:performance":"node qa/performance-gates.js"},"engines":{"node":">=20"}}
+{
+  "name": "joker-player-cordova",
+  "version": "4.7.1",
+  "private": true,
+  "description": "Joker Android music player Cordova source",
+  "scripts": {
+    "test": "node tests/qa.js",
+    "qa": "node tests/qa.js",
+    "prepare:android": "cordova platform add android@15.0.0 --nosave",
+    "build:debug": "npm run prepare:android && cordova build android --debug",
+    "build:release": "npm run prepare:android && cordova build android --release",
+    "qa:performance": "node qa/performance-gates.js"
+  },
+  "dependencies": {
+    "cordova-android": "15.0.0"
+  }
+}
